@@ -7,7 +7,7 @@ st.set_page_config(page_title="Generador de Palabras Aleatorias", layout="center
 st.title("Generador de Palabras Aleatorias")
 
 # Cargar el diccionario de palabras
-@st.cache
+
 def load_dictionary():
     with open("rae_dictionary.txt", "r", encoding="utf-8") as file:
         return set(file.read().splitlines())
