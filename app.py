@@ -1,12 +1,10 @@
 import streamlit as st
 import random
 import time
-import os
-from playsound import playsound
 
 # Configuración de la página
 st.set_page_config(page_title="Generador de Palabras Aleatorias", layout="centered")
-st.title("Generador de Palabras Aleatorias con Sonidos")
+st.title("Generador de Palabras Aleatorias")
 
 # Cargar el diccionario de palabras
 @st.cache
@@ -19,12 +17,6 @@ rae_words = load_dictionary()
 # Generar combinaciones aleatorias de letras
 def generate_random_letters():
     return "".join(random.choices("abcdefghijklmnopqrstuvwxyz", k=random.randint(3, 8)))
-
-# Reproducir un sonido aleatorio
-def play_random_sound():
-    sounds = ["sound1.mp3", "sound2.mp3", "sound3.mp3"]
-    sound = random.choice(sounds)
-    playsound(sound)
 
 # Mostrar combinaciones y verificar palabras
 placeholder = st.empty()
@@ -47,7 +39,6 @@ def main_loop():
                 found_words_set.add(random_word)
                 with found_list:
                     st.write(f"✅ {random_word}")
-                play_random_sound()
 
                 time.sleep(5)  # Pausa de 5 segundos al encontrar una palabra
                 break
@@ -56,4 +47,3 @@ def main_loop():
 
 if __name__ == "__main__":
     main_loop()
-
